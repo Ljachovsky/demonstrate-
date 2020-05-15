@@ -1,10 +1,6 @@
 #include <iostream>
 using namespace std;
 
-#define __CRTDBG_MAP_ALLOC
-#include <crtdbg.h>
-#define DEBUG_NEW new(_NORMAL_BLOCK, __FILE__, __LINE__)
-#define new DEBUG_NEW
 
 struct Stack {
 	int info;
@@ -114,7 +110,16 @@ Stack* Del_5(Stack* p)
 
 int get_middle(Stack* s)
 {
-	while (s.)
+	int count = 0;
+	int summ = 0;
+	while (s != NULL)
+	{
+		count++;
+		summ += s->info;
+		s = s->next;
+	}
+
+	return summ / count;
 }
 int main()
 {
