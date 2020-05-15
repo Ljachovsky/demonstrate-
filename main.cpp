@@ -14,8 +14,6 @@ Stack* InStack(Stack* p, int  in) {
 	return   t;
 }
 
-
-
 void View(Stack* p) {
 	Stack* t = p;
 	if (p == NULL) {
@@ -89,8 +87,23 @@ Stack* Del_5(Stack* p)
 	return p;
 }
 
-/*
-Stack* Del_5(Stack* p)
+
+
+int get_midle(Stack* s)
+{
+	int count = 0;
+	int summ = 0;
+	while (s != NULL)
+	{
+		count++;
+		summ += s->info;
+		s = s->next;
+	}
+
+	return summ / count;
+}
+
+Stack* Del_elements(Stack* p, int midle)
 {
 	Stack* t;
 	t = p;
@@ -104,22 +117,10 @@ Stack* Del_5(Stack* p)
 			t = t->next;
 		}
 	}
+	delete t;
+	if (p != NULL && p->info % 10 == 5)
+		p = p->next;
 	return p;
-}
-*/
-
-int get_middle(Stack* s)
-{
-	int count = 0;
-	int summ = 0;
-	while (s != NULL)
-	{
-		count++;
-		summ += s->info;
-		s = s->next;
-	}
-
-	return summ / count;
 }
 int main()
 {
@@ -139,13 +140,13 @@ int main()
 	Sort_p(&begin);
 	Sort_info(begin);
 	cout << endl;
-	View(begin);
-	begin = Del_5(begin);
+	//cout << get_middle(begin);
+	//View(begin);
+	begin = Del_elements(begin, get_midle(begin));
 
 	cout << endl;
 	View(begin);
 	Del_All(&begin);
 
-	_CrtDumpMemoryLeaks();
 	return 0;
 }
