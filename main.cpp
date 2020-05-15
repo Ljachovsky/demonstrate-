@@ -105,10 +105,13 @@ int get_midle(Stack* s)
 
 Stack* Del_elements(Stack* p, int midle)
 {
+	int count = 0;
+
 	Stack* t;
 	t = p;
 	while (t != NULL) {
-		if (t->info % 10 == 5) {
+		if (t->info < midle) {
+			count++;
 			p->next = t->next;
 			t = p->next;
 		}
@@ -118,8 +121,10 @@ Stack* Del_elements(Stack* p, int midle)
 		}
 	}
 	delete t;
-	if (p != NULL && p->info % 10 == 5)
+	if (p != NULL && p->info < midle)
 		p = p->next;
+
+	cout << "количество удаленных элементов: " << count << endl;
 	return p;
 }
 int main()
