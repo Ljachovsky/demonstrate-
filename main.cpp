@@ -63,29 +63,6 @@ void Sort_info(Stack* p) {
 		t = t1;
 	} while (p->next != t);
 }
-Stack* Del_5(Stack* p)
-{
-	Stack* t;
-	t = p;
-	while (t != NULL) {
-		if (t->info % 10 == 5) {
-			p->next = t->next;
-			t = p->next;
-		}
-		else {
-			p = t;
-			t = t->next;
-		}
-	}
-	delete t;
-	if (p != NULL && p->info % 10 == 5)
-	{
-		Stack* n = p;
-		p = p->next;
-		delete n;
-	}
-	return p;
-}
 
 
 
